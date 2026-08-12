@@ -54,6 +54,7 @@ ContentPage {
         { id: "visualizer",        name: Translation.tr("Visualizer"),           icon: "graphic_eq" },
         { id: "hyprlandXkbIndicator",   name: Translation.tr("Keyboard Layout"), icon: "keyboard" },
         { id: "divisor",            name: Translation.tr("Divider"),             icon: "horizontal_distribute" },
+        { id: "launcherButton",     name: Translation.tr("Launcher Button"),     icon: "search" },
     ]
 
     function availableFor() {
@@ -238,7 +239,8 @@ ContentPage {
                     options: [
                         { displayName: Translation.tr(""),          icon: "block",          value: "transparent" },
                         { displayName: Translation.tr("Pills"),     icon: "pill",           value: "pills" },
-                        { displayName: Translation.tr("Separated"), icon: "view_column_2",  value: "separated" }
+                        { displayName: Translation.tr("Separated"), icon: "view_column_2",  value: "separated" },
+                        { displayName: Translation.tr("Segmented"), icon: "tablet",           value: "segmented" },
                     ]
                 }
                 ConfigRow{
@@ -366,7 +368,7 @@ ContentPage {
                     text: Translation.tr("Space width (px)")
                     value: Config.options.bar.divider.spacing
                     from: 4
-                    to: 100
+                    to: 400
                     stepSize: 2
                     onValueChanged: {
                         Config.options.bar.divider.spacing = value;

@@ -243,24 +243,23 @@ ContentPage {
             title: Translation.tr("Presets")
 
             GroupedList {
-                ConfigTextArea {
-                  id: presetNameField
-                  Layout.fillWidth: true
-                  fieldWidth: 300
-                  buttonIcon: "newsmode"
-                  text: Translation.tr("New")
-                  placeholderText: Translation.tr("Name, description (optional)")
-
-                  confirmButtonVisible: presetNameField.value.trim() !== ""
-                  confirmButtonIcon: "save"
-                  onConfirmClicked: {
-                  Presets.save(presetNameField.value, presetCommandField.value)
-                  presetNameField.value = ""
-                  presetCommandField.value = ""
-                }
-              }
-
               ConfigTextArea {
+                id: presetNameField
+                Layout.fillWidth: true
+                fieldWidth: 300
+                buttonIcon: "newsmode"
+                text: Translation.tr("Save as")
+                placeholderText: Translation.tr("Name, description (optional)")
+                confirmButtonVisible: presetNameField.value.trim() !== ""
+                confirmButtonIcon: "save"
+                onConfirmClicked: {
+                    Presets.save(presetNameField.value, presetCommandField.value)
+                    presetNameField.value = ""
+                    presetCommandField.value = ""
+                }
+            }
+
+            ConfigTextArea {
                 id: presetCommandField
                 Layout.fillWidth: true
                 fieldWidth: 300
@@ -269,7 +268,7 @@ ContentPage {
                 placeholderText: Translation.tr("Command to run after applying (optional)")
               }
             }
-            StyledText {
+              StyledText {
                 Layout.fillWidth: true
                 Layout.topMargin: 40
                 visible: Presets.folderModel.count === 0

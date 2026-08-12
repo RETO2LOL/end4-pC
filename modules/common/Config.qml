@@ -213,6 +213,12 @@ Singleton {
                 property string volumeMixer: `~/.config/hypr/hyprland/scripts/launch_first_available.sh "pavucontrol-qt" "pavucontrol"`
             }
 
+            property JsonObject settings: JsonObject {
+                property string style: "default" // default - minimal
+                property real borderSize: 1
+                property string borderColor: "layer0Border"
+            }
+
             property JsonObject background: JsonObject {
                 property string lockWall: ""
                 property bool widgetsLocked: false
@@ -402,19 +408,19 @@ Singleton {
                 }
 
                 property JsonObject layouts: JsonObject {
-                    property list<string> leftLayout: ["workspaces"]
+                    property list<string> leftLayout: ["launcherButton", "workspaces", "activeWindow"]
                     property list<string> middleLayout: ["clockWidget"]
-                    property list<string> rightLayout: ["systemIcons"]
+                    property list<string> rightLayout: ["sysTray", "utilButtons", "systemIcons", "powerButton"]
                 }
                 
                 property list<string> screenList: [] // List of names, like "eDP-1", find out with 'hyprctl monitors' command
                 property JsonObject utilButtons: JsonObject {
                     property bool showScreenSnip: true
-                    property bool showColorPicker: false
+                    property bool showColorPicker: true
                     property bool showMicToggle: false
-                    property bool showKeyboardToggle: true
-                    property bool showWallpaperToggle: false
-                    property bool showDarkModeToggle: true
+                    property bool showKeyboardToggle: false
+                    property bool showWallpaperToggle: true
+                    property bool showDarkModeToggle: false
                     property bool showPerformanceProfileToggle: false
                     property bool showScreenRecord: false       
                     property bool isRecording: false
@@ -423,9 +429,9 @@ Singleton {
                 property JsonObject workspaces: JsonObject {
                     property bool monochromeIcons: true
                     property int shown: 10
-                    property bool showAppIcons: true
+                    property bool showAppIcons: false
                     property string indicatorStyle: "dot" // "dot" or "icon"
-                    property bool alwaysShowNumbers: false
+                    property bool alwaysShowNumbers: true
                     property int showNumberDelay: 300 // milliseconds
                     property list<string> numberMap: ["1", "2"] // Characters to show instead of numbers on workspace indicator
                     property bool useNerdFont: false
@@ -658,7 +664,7 @@ Singleton {
             }
 
             property JsonObject sidebar: JsonObject {
-                property bool banner: false
+                property bool banner: true
                 property bool mediaPlayer: false
                 property string bannerImage: ""
                 property bool keepRightSidebarLoaded: true
@@ -710,7 +716,7 @@ Singleton {
                 }
 
                 property JsonObject quickSliders: JsonObject {
-                    property bool enable: false
+                    property bool enable: true
                     property bool showMic: false
                     property bool showVolume: true
                     property bool showBrightness: true

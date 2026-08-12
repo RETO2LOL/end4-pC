@@ -244,22 +244,31 @@ ContentPage {
 
             GroupedList {
                 ConfigTextArea {
-                    id: presetNameField
-                    Layout.fillWidth: true
-                    fieldWidth: 300
-                    buttonIcon: "newsmode"
-                    text: Translation.tr("New")
-                    placeholderText: Translation.tr("Name, description (optional)")
+                  id: presetNameField
+                  Layout.fillWidth: true
+                  fieldWidth: 300
+                  buttonIcon: "newsmode"
+                  text: Translation.tr("New")
+                  placeholderText: Translation.tr("Name, description (optional)")
 
-                    confirmButtonVisible: presetNameField.value.trim() !== ""
-                    confirmButtonIcon: "save"
-                    onConfirmClicked: {
-                        Presets.save(presetNameField.value)
-                        presetNameField.value = ""
-                    }
+                  confirmButtonVisible: presetNameField.value.trim() !== ""
+                  confirmButtonIcon: "save"
+                  onConfirmClicked: {
+                  Presets.save(presetNameField.value, presetCommandField.value)
+                  presetNameField.value = ""
+                  presetCommandField.value = ""
                 }
-            }
+              }
 
+              ConfigTextArea {
+                id: presetCommandField
+                Layout.fillWidth: true
+                fieldWidth: 300
+                buttonIcon: "terminal"
+                text: Translation.tr("Command")
+                placeholderText: Translation.tr("Command to run after applying (optional)")
+              }
+            }
             StyledText {
                 Layout.fillWidth: true
                 Layout.topMargin: 40

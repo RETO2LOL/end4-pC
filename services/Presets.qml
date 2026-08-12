@@ -37,7 +37,7 @@ Singleton {
         onExited: root.refresh()
     }
 
-    function save(rawInput) {
+    function save(rawInput, commandInput) {
         const raw = rawInput.trim()
         if (raw.length === 0) return
 
@@ -51,9 +51,10 @@ Singleton {
         }
 
         name = name.replace(/\s/g, "_")
+        commandInput = commandInput.trim()
         if (name.length === 0) return
 
-        saveProc.command = ["bash", Directories.presetsScriptPath, "--save", name, description]
+        saveProc.command = ["bash", Directories.presetsScriptPath, "--save", name, description, commandInput]
         saveProc.running = true
     }
 

@@ -225,6 +225,7 @@ Singleton {
                 property bool widgetsLocked: false
                 property bool showGrid: true
                 property bool showBlur: false
+                property real blurRadius: 32
                 property string splitRatio: "100" // 25 50 100
                 property string splitSide: "left"
                 property bool showSnapLines: true
@@ -345,6 +346,11 @@ Singleton {
                         property real x: 0
                         property real y: 0
                         property real z: -1000
+                        property string style: "bars" // "bars", "mirror", "aurora", "ring", "dots"
+                        property string colorSource: "theme" // "theme", "cover"
+                        property real sensitivity: 1
+                        property int height: 260 // mirror, aurora and dots
+                        property int ringSize: 380
                     }
 
                     property JsonObject customImage: JsonObject {
@@ -397,6 +403,20 @@ Singleton {
                         property real y: 500
                         property real z: 0
                         property string sizeMode: "1x3" 
+                    }
+
+                    property JsonObject customText: JsonObject {
+                        property bool enable: false
+                        property string placementStrategy: "free"
+                        property real x: 400
+                        property real y: 300
+                        property real z: 0
+                        property string content: "Hello world"
+                        property string fontFamily: "Caveat"
+                        property int fontSize: 72
+                        property string color: "" // "" = automatic, otherwise an Appearance color name
+                        property string alignment: "center" // "left", "center", "right"
+                        property bool shadow: true
                     }
                 }
                 property list<string> screenList: [] 
@@ -456,6 +476,13 @@ Singleton {
                     property int swapWarningThreshold: 85
                     property int cpuWarningThreshold: 90
                 }
+
+                property JsonObject dynamicIsland: JsonObject {
+                    property string visualizerStyle: "dots" // "dots", "wave", "none"
+                    property bool showMediaControls: false
+                    property string leftWidget: "none"
+                    property string rightWidget: "none"
+                }
                 property JsonObject divider: JsonObject {
                     property string style: "rect" // rect - dot - space
                     property int spacing: 20
@@ -503,6 +530,7 @@ Singleton {
                     }
                 }
                 property JsonObject tooltips: JsonObject {
+                    property bool enable: true
                     property bool clickToShow: false
                 }
                 property JsonObject media: JsonObject {
@@ -511,6 +539,7 @@ Singleton {
                     property bool onlyTitle: false
                     property int maxWidth: 280
                     property int minWidth: 100
+                    property bool showLyrics: false
                 }
             }
 

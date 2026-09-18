@@ -45,6 +45,13 @@ Singleton {
     property bool dropShelfOpen: false
     property real dropShelfX: 0
     property real dropShelfY: 0
+    property string osdIndicatorType: "volume"
+    property bool barCenterOnly: false
+    property bool diSessionOpen: false
+
+    readonly property bool dynamicIslandEnabled: Config.options.bar.layouts.leftLayout.includes("dynamicIsland")
+        || Config.options.bar.layouts.middleLayout.includes("dynamicIsland")
+        || Config.options.bar.layouts.rightLayout.includes("dynamicIsland")
 
     signal centeredWallpaperThumpRequested()
 
@@ -73,7 +80,8 @@ Singleton {
         { displayName: Translation.tr("ScreenShot Region"),        value: "regionSelectorOpen" },
         { displayName: Translation.tr("Screen Translator"),      value: "screenTranslatorOpen" },
         { displayName: Translation.tr("On-screen Keyboard"),     value: "oskOpen" },
-        { displayName: Translation.tr("Session Menu"),           value: "sessionOpen" }
+        { displayName: Translation.tr("Session Menu"),           value: "sessionOpen" },
+        { displayName: Translation.tr("Equalizer"),           value: "equalizerOpen" }
     ]
 
     function toggleState(name) {
